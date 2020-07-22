@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>IPL Score Predictor</title>
+        <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+        <script src="https://kit.fontawesome.com/5f3f547070.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    </head>
+
+    <body>
+
+        <!-- Website Title -->
+    	<header class="w3-container">
+            <h2 class='container-heading'><span class="heading_font">IPL Score Predictor</span></h2>
+      </header>
+
+      <div class="ml-container">
+    		<form action="{{ url_for('predict') }}" method="POST">
+                <p><label class="label">Batting Team:</label>
+                      <select class="form-input" name="batting-team">
+                          <option value="none" class="form-input">---Select a Batting team---</option>
+                          <option value="Chennai Super Kings">Chennai Super Kings</option>
+                          <option value="Delhi Daredevils">Delhi Daredevils</option>
+                          <option value="Kings XI Punjab">Kings XI Punjab</option>
+                          <option value="Kolkata Knight Riders">Kolkata Knight Riders</option>
+                          <option value="Mumbai Indians">Mumbai Indians</option>
+                          <option value="Rajasthan Royals">Rajasthan Royals</option>
+                          <option value="Royal Challengers Bangalore">Royal Challengers Bangalore</option>
+                          <option value="Sunrisers Hyderabad">Sunrisers Hyderabad</option>
+                        </select><br></p>
+
+                <p><label class="label">Bowling Team:</label>
+                      <select class="form-input" name="bowling-team">
+                            <option value="none">---Select a Bowling team---</option>
+                            <option value="Chennai Super Kings">Chennai Super Kings</option>
+                            <option value="Delhi Daredevils">Delhi Daredevils</option>
+                            <option value="Kings XI Punjab">Kings XI Punjab</option>
+                            <option value="Kolkata Knight Riders">Kolkata Knight Riders</option>
+                            <option value="Mumbai Indians">Mumbai Indians</option>
+                            <option value="Rajasthan Royals">Rajasthan Royals</option>
+                            <option value="Royal Challengers Bangalore">Royal Challengers Bangalore</option>
+                            <option value="Sunrisers Hyderabad">Sunrisers Hyderabad</option>
+                            </select><br></p>
+
+                <p><label class="label">Overs:</label><input class="form-input" name="overs" placeholder="Overs (>= 5.0)" required="required"><br></p>
+                <p><label class="label">Runs:</label><input class="form-input" name="runs" placeholder="Runs" required="required"><br></p>
+                <p><label class="label">Wickets:</label><input class="form-input" name="wickets" placeholder="Wickets" required="required"><br></p>
+                <p><label class="label">Runs in previous 5 overs:</label><input class="form-input" name="runs_in_prev_5" placeholder="Runs scored in previous 5 Overs" required="required"><br></p>
+                <p><label class="label">Wickets in previous 5 overs:</label><input class="form-input" name="wickets_in_prev_5" placeholder="Wickets taken in previous 5 Overs" required="required"><br></p>
+
+        		<input type="submit" class="my-cta-button" value="Predict Score">
+        	</form>
+
+        </div>
+          <br>
+          <br>
+          <div class = "output">
+            {% if my_prediction %}
+				     {{ batting_team }} could score in the range of {{ lower_limit }} to {{ upper_limit }}
+            {% endif %}
+			    </div>
+
+    	</div>
+
+        <div class="footer">
+        <a target="_blank" href="https://github.com/Niteesh95/IPL-Score-Prediction-Depolyment"><i class="fab fa-github fa-lg contact-icon"></i></a>
+        <a target="_blank" href="https://www.linkedin.com/in/niteesh-chanabasanavar"><i class="fab fa-linkedin fa-lg contact-icon"></i></a>
+           </div>
+      <footer class="w3-container">
+           <p>Made by Niteesh.</p>
+      </footer>
+
+    </body>
+</html>
